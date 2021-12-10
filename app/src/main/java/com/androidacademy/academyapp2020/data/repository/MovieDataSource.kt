@@ -8,7 +8,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Singleton
 
+@Singleton
 class MovieDataSource(
     private val movieRepository: MovieRepository,
 ) : PageKeyedDataSource<Int, Movie>() {

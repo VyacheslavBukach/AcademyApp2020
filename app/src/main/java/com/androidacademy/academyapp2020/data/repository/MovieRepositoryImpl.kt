@@ -5,10 +5,15 @@ import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.domain.repository.MovieRepository
 import com.androidacademy.academyapp2020.domain.api.MovieApiService
 import com.androidacademy.academyapp2020.domain.api.response.MovieId
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val REPOSITORY_TAG = "repository_tag"
 
-class MovieRepositoryImpl(private val movieApiService: MovieApiService) : MovieRepository {
+@Singleton
+class MovieRepositoryImpl @Inject constructor(
+    private val movieApiService: MovieApiService
+) : MovieRepository {
 
     override suspend fun loadMoviesList(page: Int): List<Movie> {
         val idsList: List<MovieId>

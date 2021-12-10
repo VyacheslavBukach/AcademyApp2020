@@ -14,18 +14,17 @@ import com.androidacademy.academyapp2020.R
 import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.data.repository.MovieRepositoryImpl
 import com.androidacademy.academyapp2020.databinding.FragmentMoviesListBinding
-import com.androidacademy.academyapp2020.domain.api.RetrofitModule
 import com.androidacademy.academyapp2020.utils.LoadStatus
 import com.androidacademy.academyapp2020.presentation.adapter.ItemDecorator
 import com.androidacademy.academyapp2020.presentation.adapter.MovieAdapter
 import com.androidacademy.academyapp2020.presentation.viewmodel.MoviesListViewModel
 import com.androidacademy.academyapp2020.view.ui.details.MovieDetailsFragment
-import com.androidacademy.academyapp2020.presentation.viewmodel.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MoviesListFragment : Fragment(), MovieAdapter.OnMovieClickListener {
 
-    private val repository = MovieRepositoryImpl(RetrofitModule.movieApiService)
-    private val viewModel: MoviesListViewModel by viewModels { ViewModelFactory(repository) }
+    private val viewModel: MoviesListViewModel by viewModels()
 
     private val movieAdapter = MovieAdapter(this)
 

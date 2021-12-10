@@ -6,6 +6,7 @@ A working prototype of the Android application that can show a list of popular m
 
 ## Features
 
+- DI Hilt
 - MVVM architecture
 - Landscape and portrait orientation
 - Kotlin Coroutines

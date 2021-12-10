@@ -7,9 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.domain.repository.MovieRepository
 import com.androidacademy.academyapp2020.utils.LoadStatus
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieDetailsViewModel(private val movieRepository: MovieRepository) : ViewModel() {
+@HiltViewModel
+class MovieDetailsViewModel @Inject constructor(
+    private val movieRepository: MovieRepository
+) : ViewModel() {
 
     private val _status = MutableLiveData<LoadStatus>()
     val status: LiveData<LoadStatus>
