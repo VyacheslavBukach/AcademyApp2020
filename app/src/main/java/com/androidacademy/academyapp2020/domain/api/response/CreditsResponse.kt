@@ -1,6 +1,6 @@
-package com.androidacademy.academyapp2020.network.response
+package com.androidacademy.academyapp2020.domain.api.response
 
-import com.androidacademy.academyapp2020.data.entity.Actor
+import com.androidacademy.academyapp2020.domain.entity.Actor
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

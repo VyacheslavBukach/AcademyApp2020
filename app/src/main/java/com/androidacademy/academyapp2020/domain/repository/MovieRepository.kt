@@ -1,6 +1,6 @@
-package com.androidacademy.academyapp2020.data.repository
+package com.androidacademy.academyapp2020.domain.repository
 
-import com.androidacademy.academyapp2020.data.entity.Movie
+import com.androidacademy.academyapp2020.domain.entity.Movie
 
 interface MovieRepository {
     suspend fun loadMoviesList(page: Int): List<Movie>

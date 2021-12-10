@@ -1,4 +1,4 @@
-package com.androidacademy.academyapp2020.network
+package com.androidacademy.academyapp2020.domain.api
 
 import okhttp3.Interceptor
 import okhttp3.Response

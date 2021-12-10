@@ -1,7 +1,7 @@
-package com.androidacademy.academyapp2020.network
+package com.androidacademy.academyapp2020.domain.api
 
-import com.androidacademy.academyapp2020.network.response.MovieDetailsResponse
-import com.androidacademy.academyapp2020.network.response.MoviesListResponse
+import com.androidacademy.academyapp2020.domain.api.response.MovieDetailsResponse
+import com.androidacademy.academyapp2020.domain.api.response.MoviesListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

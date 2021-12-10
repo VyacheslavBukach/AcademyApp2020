@@ -1,9 +1,10 @@
 package com.androidacademy.academyapp2020.data.repository
 
 import android.util.Log
-import com.androidacademy.academyapp2020.data.entity.Movie
-import com.androidacademy.academyapp2020.network.MovieApiService
-import com.androidacademy.academyapp2020.network.response.MovieId
+import com.androidacademy.academyapp2020.domain.entity.Movie
+import com.androidacademy.academyapp2020.domain.repository.MovieRepository
+import com.androidacademy.academyapp2020.domain.api.MovieApiService
+import com.androidacademy.academyapp2020.domain.api.response.MovieId
 
 private const val REPOSITORY_TAG = "repository_tag"
 
@@ -27,5 +28,4 @@ class MovieRepositoryImpl(private val movieApiService: MovieApiService) : MovieR
 
     override suspend fun loadMovieDetails(movieId: Int): Movie =
         movieApiService.getMovieDetailsById(movieId).toMovie()
-
 }

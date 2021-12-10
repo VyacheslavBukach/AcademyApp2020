@@ -1,4 +1,4 @@
-package com.androidacademy.academyapp2020.view.ui.movies
+package com.androidacademy.academyapp2020.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.androidacademy.academyapp2020.data.entity.Movie
+import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.data.repository.MovieDataSource
-import com.androidacademy.academyapp2020.data.repository.MovieRepository
+import com.androidacademy.academyapp2020.domain.repository.MovieRepository
 import com.androidacademy.academyapp2020.utils.LoadStatus
 
 class MoviesListViewModel(private val movieRepository: MovieRepository) : ViewModel() {

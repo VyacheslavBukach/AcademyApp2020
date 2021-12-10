@@ -1,4 +1,4 @@
-package com.androidacademy.academyapp2020.view.adapter
+package com.androidacademy.academyapp2020.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.data.entity.Movie
+import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.databinding.ViewHolderMovieBinding
 import com.androidacademy.academyapp2020.utils.loadMoviePicture
 

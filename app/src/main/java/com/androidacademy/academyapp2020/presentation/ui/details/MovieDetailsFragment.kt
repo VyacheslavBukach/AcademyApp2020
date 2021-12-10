@@ -9,15 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.data.entity.Movie
+import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.data.repository.MovieRepositoryImpl
 import com.androidacademy.academyapp2020.databinding.FragmentMovieDetailsBinding
-import com.androidacademy.academyapp2020.network.RetrofitModule
+import com.androidacademy.academyapp2020.domain.api.RetrofitModule
+
 import com.androidacademy.academyapp2020.utils.LoadStatus
 import com.androidacademy.academyapp2020.utils.loadMovieBackdrop
-import com.androidacademy.academyapp2020.view.adapter.ActorAdapter
-import com.androidacademy.academyapp2020.view.adapter.ItemDecorator
-import com.androidacademy.academyapp2020.viewmodel.ViewModelFactory
+import com.androidacademy.academyapp2020.presentation.adapter.ActorAdapter
+import com.androidacademy.academyapp2020.presentation.adapter.ItemDecorator
+import com.androidacademy.academyapp2020.presentation.viewmodel.MovieDetailsViewModel
+import com.androidacademy.academyapp2020.presentation.viewmodel.ViewModelFactory
 
 const val ARG_MOVIE = "movie_param"
 
