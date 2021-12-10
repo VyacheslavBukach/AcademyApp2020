@@ -7,25 +7,53 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.view.adapter.FilmAdapter
+import com.androidacademy.academyapp2020.data.model.Movie
+import com.androidacademy.academyapp2020.data.model.loadMovies
+import com.androidacademy.academyapp2020.databinding.FragmentMoviesListBinding
 import com.androidacademy.academyapp2020.view.adapter.ItemDecorator
+import com.androidacademy.academyapp2020.view.adapter.MovieAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
-class FragmentMoviesList : Fragment(), FilmAdapter.OnItemClickListener {
+class FragmentMoviesList : Fragment(), MovieAdapter.OnMovieClickListener {
 
-    private val filmAdapter = FilmAdapter(this)
+    private val movieAdapter = MovieAdapter(this)
+
+    private var _binding: FragmentMoviesListBinding? = null
+    private val binding get() = _binding!!
+
+    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+    ): View {
+        _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<RecyclerView>(R.id.rv_films).apply {
+        initMovieRecyclerView()
+        loadMovies()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        uiScope.cancel()
+    }
+
+    private fun initMovieRecyclerView() {
+        binding.rvMovies.apply {
             when (resources.configuration.orientation) {
                 Configuration.ORIENTATION_LANDSCAPE -> {
                     layoutManager = GridLayoutManager(context, 4)
@@ -34,14 +62,21 @@ class FragmentMoviesList : Fragment(), FilmAdapter.OnItemClickListener {
                     layoutManager = GridLayoutManager(context, 2)
                 }
             }
-            adapter = filmAdapter
+            adapter = movieAdapter
             addItemDecoration(ItemDecorator(left = 6, right = 6, bottom = 6, top = 6))
         }
     }
 
-    override fun onItemClick() {
+    private fun loadMovies() {
+        uiScope.launch {
+            val movieList = loadMovies(requireContext())
+            movieAdapter.submitList(movieList)
+        }
+    }
+
+    override fun onMovieClick(movie: Movie) {
         requireActivity().supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragment_container, FragmentMoviesDetails())
+            add(R.id.fragment_container, FragmentMoviesDetails.newInstance(movie))
             addToBackStack(null)
             commit()
         }

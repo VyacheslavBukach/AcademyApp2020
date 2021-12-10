@@ -1,27 +1,21 @@
 <resources>
     <string name="app_name">AcademyApp2020</string>
 
-    <string name="film_title_1">Avengers: End Game</string>
-    <string name="film_title_2">Tenet</string>
-    <string name="film_title_3">Black Widow</string>
-    <string name="film_title_4">Wonder Woman 1984</string>
-    <string name="film_tag_1">Action, Adventure, Fantasy</string>
-    <string name="film_tag_2">Action, Sci-Fi, Thriller</string>
-    <string name="film_tag_3">Action, Adventure, Sci-Fi</string>
-    <string name="film_tag_4">Action, Adventure, Fantasy</string>
+    <string name="tools_movie_title">Avengers: End Game</string>
+    <string name="tools_movie_genre">Action, Adventure, Fantasy</string>
+    <string name="tools_movie_overview">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
+    <string name="tools_movie_minimum_age">13+</string>
+    <string name="tools_movie_number_of_ratings">125 Reviews</string>
+    <string name="tools_movie_runtime">125 Min</string>
+    <string name="tools_actor_name">Robert Downey Jr.</string>
 
+    <string name="movies_list">Movies list</string>
     <string name="back">Back</string>
     <string name="age">%1$s+</string>
-    <string name="tools_age">13+</string>
     <string name="review">%1$s Reviews</string>
-    <string name="tools_review">125 Reviews</string>
     <string name="duration">%1$s Min</string>
+
     <string name="storyline">Storyline</string>
-    <string name="description">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="cast">Cast</string>
-    <string name="robert_downey_jr">Robert Downey Jr.</string>
-    <string name="chris_evans">Chris Evans</string>
-    <string name="mark_ruffalo">Mark Ruffalo</string>
-    <string name="chris_hemsworth">Chris Hemsworth</string>
-    <string name="movies_list">Movies list</string>
+
 </resources>

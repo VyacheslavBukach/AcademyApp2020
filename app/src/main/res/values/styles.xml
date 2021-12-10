@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="gradient">
         <item name="android:fontFamily">@font/roboto_black</item>
         <item name="android:textColor">#ECECEC</item>
@@ -8,9 +9,19 @@
         <item name="android:shadowDy">6</item>
         <item name="android:shadowRadius">12</item>
     </style>
-    <style name="actors_name">
+
+    <style name="actor_name">
         <item name="android:fontFamily">@font/roboto_black</item>
         <item name="android:textColor">@color/grey_light</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="StarRatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/pink</item>
+        <item name="android:secondaryProgressTint">@color/pink</item>
+        <item name="android:progressBackgroundTint">@color/white</item>
+        <item name="android:numStars">5</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:stepSize">0.01</item>
     </style>
 </resources>

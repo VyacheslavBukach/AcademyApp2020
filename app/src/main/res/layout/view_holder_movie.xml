@@ -2,63 +2,64 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/gradient_radial"
     android:padding="@dimen/indent_2">
 
     <ImageView
-        android:id="@+id/iv_poster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
+        android:id="@+id/iv_movie_poster"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/movie_height"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/movie_1_poster" />
+        tools:srcCompat="@drawable/movie_poster" />
 
     <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
+        android:id="@+id/v_movie_gradient"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/gradient_linear"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_poster"
-        app:layout_constraintEnd_toEndOf="@id/iv_poster"
-        app:layout_constraintStart_toStartOf="@id/iv_poster"
-        app:layout_constraintTop_toTopOf="@+id/iv_poster" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_movie_poster"
+        app:layout_constraintEnd_toEndOf="@id/iv_movie_poster"
+        app:layout_constraintStart_toStartOf="@id/iv_movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/iv_movie_poster" />
 
     <TextView
-        android:id="@+id/tv_film_name"
+        android:id="@+id/tv_movie_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/indent_8"
         android:layout_marginTop="@dimen/indent_8"
         android:layout_marginEnd="@dimen/indent_8"
+        android:ellipsize="end"
         android:fontFamily="@font/roboto_black"
-        android:text="Avengers: End Game"
+        android:maxLines="1"
         android:textColor="@color/white"
         android:textSize="@dimen/size_14"
-        app:layout_constraintEnd_toEndOf="@+id/iv_poster"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/iv_poster"
-        app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_movie_runtime"
+        app:layout_constraintEnd_toEndOf="@+id/iv_movie_poster"
+        app:layout_constraintStart_toStartOf="@+id/tv_movie_runtime"
+        app:layout_constraintTop_toBottomOf="@+id/iv_movie_poster"
+        tools:text="@string/tools_movie_title" />
 
     <TextView
-        android:id="@+id/tv_duration"
+        android:id="@+id/tv_movie_runtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/indent_8"
         android:layout_marginBottom="@dimen/indent_8"
         android:fontFamily="@font/roboto_black"
-        android:text="137 min"
         android:textAllCaps="true"
         android:textColor="@color/duration_color"
         android:textSize="@dimen/size_8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_film_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_film_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/tools_movie_runtime" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_movie_age_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/indent_8"
@@ -68,112 +69,69 @@
         app:srcCompat="@drawable/ic_rectangle_without_border" />
 
     <TextView
-        android:id="@+id/tv_age"
+        android:id="@+id/tv_movie_age"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/roboto_black"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/size_12"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_movie_age_background"
+        app:layout_constraintEnd_toEndOf="@+id/iv_movie_age_background"
+        app:layout_constraintStart_toStartOf="@+id/iv_movie_age_background"
+        app:layout_constraintTop_toTopOf="@+id/iv_movie_age_background"
         tools:text="13+" />
 
     <ImageView
-        android:id="@+id/iv_like"
+        android:id="@+id/iv_movie_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/indent_8"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_movie_age_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/iv_movie_age_background"
         app:srcCompat="@drawable/ic_like_no" />
 
     <TextView
-        android:id="@+id/tv_tag"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_movie_genres"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/indent_2"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/roboto_light"
         android:gravity="center_vertical"
-        android:text="@string/film_tag_1"
         android:textColor="@color/pink"
         android:textSize="@dimen/size_8"
-        app:layout_constraintBottom_toTopOf="@+id/tv_review"
-        app:layout_constraintStart_toStartOf="@+id/iv_star_1" />
+        app:layout_constraintBottom_toTopOf="@+id/rb_movie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rb_movie"
+        tools:text="@string/tools_movie_genre" />
 
-    <ImageView
-        android:id="@+id/iv_star_1"
-        android:layout_width="@dimen/size_8"
-        android:layout_height="@dimen/size_8"
-        android:layout_marginStart="@dimen/indent_8"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star_2"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star_2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_star_2"
-        app:srcCompat="@drawable/ic_star_on" />
-
-    <ImageView
-        android:id="@+id/iv_star_2"
-        android:layout_width="@dimen/size_8"
-        android:layout_height="@dimen/size_8"
-        android:layout_marginStart="@dimen/indent_2"
-        android:layout_marginEnd="@dimen/indent_2"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star_3"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star_3"
-        app:layout_constraintStart_toEndOf="@+id/iv_star_1"
-        app:layout_constraintTop_toTopOf="@+id/iv_star_3"
-        app:srcCompat="@drawable/ic_star_on" />
-
-    <ImageView
-        android:id="@+id/iv_star_3"
-        android:layout_width="@dimen/size_8"
-        android:layout_height="@dimen/size_8"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star_4"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star_4"
-        app:layout_constraintStart_toEndOf="@+id/iv_star_2"
-        app:layout_constraintTop_toTopOf="@+id/iv_star_4"
-        app:srcCompat="@drawable/ic_star_on" />
-
-    <ImageView
-        android:id="@+id/iv_star_4"
-        android:layout_width="@dimen/size_8"
-        android:layout_height="@dimen/size_8"
-        android:layout_marginStart="@dimen/indent_2"
-        android:layout_marginEnd="@dimen/indent_2"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star_5"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star_5"
-        app:layout_constraintStart_toEndOf="@+id/iv_star_3"
-        app:layout_constraintTop_toTopOf="@+id/iv_star_5"
-        app:srcCompat="@drawable/ic_star_on" />
-
-    <ImageView
-        android:id="@+id/iv_star_5"
-        android:layout_width="@dimen/size_8"
-        android:layout_height="@dimen/size_8"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_review"
-        app:layout_constraintEnd_toStartOf="@+id/tv_review"
-        app:layout_constraintStart_toEndOf="@+id/iv_star_4"
-        app:layout_constraintTop_toTopOf="@+id/tv_review"
-        app:srcCompat="@drawable/ic_star_off" />
-
-    <TextView
-        android:id="@+id/tv_review"
+    <RatingBar
+        android:id="@+id/rb_movie"
+        style="@style/StarRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/indent_6"
+        android:layout_marginStart="@dimen/indent_8"
         android:layout_marginBottom="@dimen/indent_8"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:transformPivotX="0dp"
+        android:transformPivotY="@dimen/indent_8"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_movie_poster"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_movie_number_of_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto_black"
-        android:text="@string/tools_review"
         android:textAllCaps="true"
         android:textColor="@color/grey"
         android:textSize="@dimen/size_8"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_poster"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_star_5" />
+        app:layout_constraintBottom_toBottomOf="@+id/rb_movie"
+        app:layout_constraintStart_toEndOf="@+id/rb_movie"
+        app:layout_constraintTop_toTopOf="@+id/rb_movie"
+        tools:text="@string/tools_movie_number_of_ratings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

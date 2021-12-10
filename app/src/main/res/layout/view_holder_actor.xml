@@ -6,21 +6,22 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/iv_actor_photo"
+        android:id="@+id/iv_actor_picture"
         android:layout_width="@dimen/indent_80"
         android:layout_height="@dimen/indent_80"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/actor_1" />
+        app:srcCompat="@drawable/actor_poster" />
 
     <TextView
         android:id="@+id/tv_actor_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent_6"
-        android:textAppearance="@style/actors_name"
-        app:layout_constraintEnd_toEndOf="@+id/iv_actor_photo"
-        app:layout_constraintStart_toStartOf="@+id/iv_actor_photo"
-        app:layout_constraintTop_toBottomOf="@+id/iv_actor_photo"
-        tools:text="@string/robert_downey_jr" />
+        android:textAppearance="@style/actor_name"
+        app:layout_constraintEnd_toEndOf="@+id/iv_actor_picture"
+        app:layout_constraintStart_toStartOf="@+id/iv_actor_picture"
+        app:layout_constraintTop_toBottomOf="@+id/iv_actor_picture"
+        tools:text="@string/tools_actor_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
