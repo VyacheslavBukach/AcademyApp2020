@@ -5,27 +5,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.androidacademy.academyapp2020.R
 import com.androidacademy.academyapp2020.data.model.Movie
-import com.androidacademy.academyapp2020.data.model.loadMovies
+import com.androidacademy.academyapp2020.data.repository.LocalRepository
 import com.androidacademy.academyapp2020.databinding.FragmentMoviesListBinding
+import com.androidacademy.academyapp2020.utils.LoadStatus
 import com.androidacademy.academyapp2020.view.adapter.ItemDecorator
 import com.androidacademy.academyapp2020.view.adapter.MovieAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import com.androidacademy.academyapp2020.viewmodel.MoviesListViewModel
+import com.androidacademy.academyapp2020.viewmodel.ViewModelFactory
 
-class FragmentMoviesList : Fragment(), MovieAdapter.OnMovieClickListener {
+class MoviesListFragment : Fragment(), MovieAdapter.OnMovieClickListener {
+
+    private val repository = LocalRepository()
+    private val viewModel: MoviesListViewModel by viewModels { ViewModelFactory(repository) }
 
     private val movieAdapter = MovieAdapter(this)
 
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
-
-    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,23 +35,18 @@ class FragmentMoviesList : Fragment(), MovieAdapter.OnMovieClickListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initMovieRecyclerView()
-        loadMovies()
+        viewModel.moviesList.observe(viewLifecycleOwner, this::updateMovieAdapter)
+        viewModel.status.observe(viewLifecycleOwner, this::updateProgressBar)
+        viewModel.getMovies(requireContext())
+
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        uiScope.cancel()
     }
 
     private fun initMovieRecyclerView() {
@@ -67,16 +64,25 @@ class FragmentMoviesList : Fragment(), MovieAdapter.OnMovieClickListener {
         }
     }
 
-    private fun loadMovies() {
-        uiScope.launch {
-            val movieList = loadMovies(requireContext())
-            movieAdapter.submitList(movieList)
+    private fun updateMovieAdapter(movies: List<Movie>) {
+        movieAdapter.submitList(movies)
+    }
+
+    private fun updateProgressBar(status: LoadStatus) {
+        when (status) {
+            is LoadStatus.Success -> showProgressBar(false)
+            is LoadStatus.Loading -> showProgressBar(true)
+            is LoadStatus.Error -> showProgressBar(false)
         }
     }
 
-    override fun onMovieClick(movie: Movie) {
+    private fun showProgressBar(loading: Boolean) {
+        binding.pbMoviesList.isVisible = loading
+    }
+
+    override fun onMovieClick(movieId: Int) {
         requireActivity().supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragment_container, FragmentMoviesDetails.newInstance(movie))
+            add(R.id.fragment_container, MovieDetailsFragment.newInstance(movieId))
             addToBackStack(null)
             commit()
         }
