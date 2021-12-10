@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 const val ARG_MOVIE = "movie_param"
 
 @AndroidEntryPoint
-class MovieDetailsFragment : Fragment() {
+class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
     private val binding: FragmentMovieDetailsBinding by viewBinding()
     private val viewModel: MovieDetailsViewModel by viewModels()

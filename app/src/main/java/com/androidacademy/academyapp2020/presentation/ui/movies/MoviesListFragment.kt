@@ -20,7 +20,7 @@ import com.androidacademy.academyapp2020.view.ui.details.MovieDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MoviesListFragment : Fragment(), MovieAdapter.OnMovieClickListener {
+class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MovieAdapter.OnMovieClickListener {
 
     private val binding: FragmentMoviesListBinding by viewBinding()
     private val viewModel: MoviesListViewModel by viewModels()
