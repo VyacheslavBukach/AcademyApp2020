@@ -2,51 +2,34 @@ package com.androidacademy.academyapp2020.view.ui.movies
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.domain.entity.Movie
-import com.androidacademy.academyapp2020.data.repository.MovieRepositoryImpl
 import com.androidacademy.academyapp2020.databinding.FragmentMoviesListBinding
-import com.androidacademy.academyapp2020.utils.LoadStatus
+import com.androidacademy.academyapp2020.domain.entity.Movie
 import com.androidacademy.academyapp2020.presentation.adapter.ItemDecorator
 import com.androidacademy.academyapp2020.presentation.adapter.MovieAdapter
 import com.androidacademy.academyapp2020.presentation.viewmodel.MoviesListViewModel
+import com.androidacademy.academyapp2020.utils.LoadStatus
 import com.androidacademy.academyapp2020.view.ui.details.MovieDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MoviesListFragment : Fragment(), MovieAdapter.OnMovieClickListener {
 
+    private val binding: FragmentMoviesListBinding by viewBinding()
     private val viewModel: MoviesListViewModel by viewModels()
-
     private val movieAdapter = MovieAdapter(this)
 
-    private var _binding: FragmentMoviesListBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initMovieRecyclerView()
         initObservers()
-
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun initMovieRecyclerView() {

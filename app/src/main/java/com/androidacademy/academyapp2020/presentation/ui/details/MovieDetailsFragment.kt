@@ -1,13 +1,12 @@
 package com.androidacademy.academyapp2020.view.ui.details
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.androidacademy.academyapp2020.R
 import com.androidacademy.academyapp2020.databinding.FragmentMovieDetailsBinding
 import com.androidacademy.academyapp2020.domain.entity.Movie
@@ -23,33 +22,18 @@ const val ARG_MOVIE = "movie_param"
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
 
+    private val binding: FragmentMovieDetailsBinding by viewBinding()
     private val viewModel: MovieDetailsViewModel by viewModels()
-
     private var movieId: Int = -1
-
-    private var _binding: FragmentMovieDetailsBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         movieId = requireArguments().getInt(ARG_MOVIE)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initObservers()
-
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun initObservers() {

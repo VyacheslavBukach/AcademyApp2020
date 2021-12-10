@@ -68,4 +68,6 @@ dependencies {
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    // ViewBinding
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
 }
