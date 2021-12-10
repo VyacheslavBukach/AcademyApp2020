@@ -8,6 +8,7 @@ A working prototype of the Android application that can show a list of popular m
 
 - DI Hilt
 - MVVM architecture
+- Jetpack Navigation Component with SafeArgs
 - Landscape and portrait orientation
 - Kotlin Coroutines
 - Paging 3 Library

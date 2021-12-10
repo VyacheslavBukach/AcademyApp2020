@@ -5,6 +5,8 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.androidacademy.academyapp2020.R
@@ -24,15 +26,12 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
     private val binding: FragmentMovieDetailsBinding by viewBinding()
     private val viewModel: MovieDetailsViewModel by viewModels()
+    private val args: MovieDetailsFragmentArgs by navArgs()
     private var movieId: Int = -1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        movieId = requireArguments().getInt(ARG_MOVIE)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        movieId = args.movieId
         initObservers()
     }
 
@@ -62,7 +61,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                 setHasFixedSize(true)
             }
             tvMovieDetailsBack.setOnClickListener {
-                requireActivity().supportFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
         }
     }
@@ -77,15 +76,5 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
     private fun showProgressBar(loading: Boolean) {
         binding.pbMovieDetails.isVisible = loading
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(movieId: Int) =
-            MovieDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_MOVIE, movieId)
-                }
-            }
     }
 }

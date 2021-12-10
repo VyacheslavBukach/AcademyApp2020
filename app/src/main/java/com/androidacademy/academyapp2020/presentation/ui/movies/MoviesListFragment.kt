@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -16,11 +17,11 @@ import com.androidacademy.academyapp2020.presentation.adapter.ItemDecorator
 import com.androidacademy.academyapp2020.presentation.adapter.MovieAdapter
 import com.androidacademy.academyapp2020.presentation.viewmodel.MoviesListViewModel
 import com.androidacademy.academyapp2020.utils.LoadStatus
-import com.androidacademy.academyapp2020.view.ui.details.MovieDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MovieAdapter.OnMovieClickListener {
+class MoviesListFragment : Fragment(R.layout.fragment_movies_list),
+    MovieAdapter.OnMovieClickListener {
 
     private val binding: FragmentMoviesListBinding by viewBinding()
     private val viewModel: MoviesListViewModel by viewModels()
@@ -69,10 +70,8 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MovieAdapter
     }
 
     override fun onMovieClick(movieId: Int) {
-        requireActivity().supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragment_container, MovieDetailsFragment.newInstance(movieId))
-            addToBackStack(null)
-            commit()
-        }
+        val action =
+            MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment(movieId)
+        findNavController().navigate(action)
     }
 }
