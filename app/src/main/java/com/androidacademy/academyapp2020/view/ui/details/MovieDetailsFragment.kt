@@ -1,4 +1,4 @@
-package com.androidacademy.academyapp2020.view.ui
+package com.androidacademy.academyapp2020.view.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,31 +9,31 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.data.model.Movie
-import com.androidacademy.academyapp2020.data.repository.LocalRepository
+import com.androidacademy.academyapp2020.data.entity.Movie
+import com.androidacademy.academyapp2020.data.repository.MovieRepositoryImpl
 import com.androidacademy.academyapp2020.databinding.FragmentMovieDetailsBinding
+import com.androidacademy.academyapp2020.network.RetrofitModule
 import com.androidacademy.academyapp2020.utils.LoadStatus
 import com.androidacademy.academyapp2020.utils.loadMovieBackdrop
 import com.androidacademy.academyapp2020.view.adapter.ActorAdapter
 import com.androidacademy.academyapp2020.view.adapter.ItemDecorator
-import com.androidacademy.academyapp2020.viewmodel.MovieDetailsViewModel
 import com.androidacademy.academyapp2020.viewmodel.ViewModelFactory
 
 const val ARG_MOVIE = "movie_param"
 
 class MovieDetailsFragment : Fragment() {
 
-    private val repository = LocalRepository()
+    private val repository = MovieRepositoryImpl(RetrofitModule.movieApiService)
     private val viewModel: MovieDetailsViewModel by viewModels { ViewModelFactory(repository) }
 
-    private var movieId: Int? = null
+    private var movieId: Int = -1
 
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        movieId = arguments?.getInt(ARG_MOVIE)
+        movieId = requireArguments().getInt(ARG_MOVIE)
     }
 
     override fun onCreateView(
@@ -43,9 +43,7 @@ class MovieDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
 
-        viewModel.movie.observe(viewLifecycleOwner, this::initMovieViews)
-        viewModel.status.observe(viewLifecycleOwner, this::updateProgressBar)
-        viewModel.getMovie(requireContext(), movieId)
+        initObservers()
 
         return binding.root
     }
@@ -55,7 +53,13 @@ class MovieDetailsFragment : Fragment() {
         _binding = null
     }
 
-    private fun initMovieViews(movie: Movie?) {
+    private fun initObservers() {
+        viewModel.movie.observe(viewLifecycleOwner, this::initMovieDetailsViews)
+        viewModel.status.observe(viewLifecycleOwner, this::updateProgressBar)
+        viewModel.getMovie(movieId)
+    }
+
+    private fun initMovieDetailsViews(movie: Movie?) {
         binding.apply {
             movie?.let {
                 if (it.actors.isEmpty()) tvMovieDetailsCast.visibility = View.GONE

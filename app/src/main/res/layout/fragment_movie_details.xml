@@ -79,27 +79,31 @@
 
         <TextView
             android:id="@+id/tv_movie_details_title"
-            android:layout_width="343dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/indent_16"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="254dp"
+            android:layout_marginEnd="16dp"
             android:includeFontPadding="false"
             android:lineHeight="@dimen/size_40"
             android:textAppearance="@style/gradient"
             android:textSize="@dimen/size_40"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/tools_movie_title" />
 
         <TextView
             android:id="@+id/tv_movie_details_genres"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/indent_4"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_light"
             android:gravity="center_vertical"
             android:textColor="@color/pink"
             android:textSize="@dimen/size_14"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_movie_details_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_movie_details_title"
             tools:text="@string/tools_movie_genre" />
@@ -178,9 +182,12 @@
             android:layout_marginStart="@dimen/indent_12"
             android:layout_marginTop="@dimen/indent_8"
             android:layout_marginEnd="@dimen/indent_12"
+            android:layout_marginBottom="@dimen/indent_16"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_movie_details_cast"
+            app:layout_constraintVertical_bias="0.0"
             tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/view_holder_actor"
             tools:orientation="horizontal" />

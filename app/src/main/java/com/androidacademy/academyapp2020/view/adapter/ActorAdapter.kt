@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.academyapp2020.R
-import com.androidacademy.academyapp2020.data.model.Actor
+import com.androidacademy.academyapp2020.data.entity.Actor
 import com.androidacademy.academyapp2020.databinding.ViewHolderActorBinding
 import com.androidacademy.academyapp2020.utils.loadActorPicture
 

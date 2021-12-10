@@ -8,12 +8,14 @@ private const val IMAGE_CORNER = 16f
 
 fun ImageView.loadActorPicture(url: String) {
     this.load(url) {
+        crossfade(true)
         transformations(RoundedCornersTransformation(IMAGE_CORNER))
     }
 }
 
 fun ImageView.loadMoviePicture(url: String) {
     this.load(url) {
+        crossfade(true)
         transformations(
             RoundedCornersTransformation(
                 topLeft = IMAGE_CORNER,
@@ -23,6 +25,8 @@ fun ImageView.loadMoviePicture(url: String) {
     }
 }
 
-fun ImageView.loadMovieBackdrop(url: String?) {
-    this.load(url)
+fun ImageView.loadMovieBackdrop(url: String) {
+    this.load(url) {
+        crossfade(true)
+    }
 }
