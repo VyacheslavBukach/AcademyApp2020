@@ -62,7 +62,7 @@ class FilmAdapter(private val listener: OnItemClickListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmHolder =
         FilmHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.movie_list_item,
+                R.layout.view_holder_movie,
                 parent,
                 false
             )
@@ -74,7 +74,7 @@ class FilmAdapter(private val listener: OnItemClickListener) :
 
     override fun getItemCount(): Int = filmList.size
 
-    inner class FilmHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FilmHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(film: Film, listener: OnItemClickListener) {
             itemView.findViewById<TextView>(R.id.tv_age).text =

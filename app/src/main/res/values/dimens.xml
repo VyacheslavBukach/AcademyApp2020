@@ -16,5 +16,6 @@
     <dimen name="indent_18">18dp</dimen>
     <dimen name="indent_24">24dp</dimen>
     <dimen name="indent_28">28dp</dimen>
+    <dimen name="indent_80">80dp</dimen>
 
 </resources>

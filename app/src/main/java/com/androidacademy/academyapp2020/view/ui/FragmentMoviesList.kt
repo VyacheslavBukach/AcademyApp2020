@@ -25,7 +25,7 @@ class FragmentMoviesList : Fragment(), FilmAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<RecyclerView>(R.id.recyclerView).apply {
+        view.findViewById<RecyclerView>(R.id.rv_films).apply {
             when (resources.configuration.orientation) {
                 Configuration.ORIENTATION_LANDSCAPE -> {
                     layoutManager = GridLayoutManager(context, 4)

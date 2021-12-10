@@ -218,97 +218,19 @@
             app:layout_constraintStart_toStartOf="@+id/tv_description"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
-        <ImageView
-            android:id="@+id/iv_actor_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/indent_16"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_actors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indent_12"
             android:layout_marginTop="@dimen/indent_8"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/iv_actor_2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_marginEnd="@dimen/indent_12"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_cast"
-            app:srcCompat="@drawable/movie_1" />
-
-        <ImageView
-            android:id="@+id/iv_actor_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/indent_8"
-            android:layout_marginEnd="@dimen/indent_8"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_actor_1"
-            app:layout_constraintEnd_toStartOf="@+id/iv_actor_3"
-            app:layout_constraintStart_toEndOf="@+id/iv_actor_1"
-            app:layout_constraintTop_toTopOf="@+id/iv_actor_1"
-            app:srcCompat="@drawable/movie_2" />
-
-        <ImageView
-            android:id="@+id/iv_actor_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_actor_2"
-            app:layout_constraintEnd_toStartOf="@+id/iv_actor_4"
-            app:layout_constraintStart_toEndOf="@+id/iv_actor_2"
-            app:layout_constraintTop_toTopOf="@+id/iv_actor_2"
-            app:srcCompat="@drawable/movie_3" />
-
-        <ImageView
-            android:id="@+id/iv_actor_4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/indent_8"
-            android:layout_marginEnd="@dimen/indent_16"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_actor_3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_actor_3"
-            app:layout_constraintTop_toTopOf="@+id/iv_actor_3"
-            app:srcCompat="@drawable/movie_4" />
-
-        <TextView
-            android:id="@+id/tv_actor_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/indent_6"
-            android:text="@string/robert_downey_jr"
-            android:textAppearance="@style/actors_name"
-            app:layout_constraintEnd_toEndOf="@+id/iv_actor_1"
-            app:layout_constraintStart_toStartOf="@+id/iv_actor_1"
-            app:layout_constraintTop_toBottomOf="@+id/iv_actor_1" />
-
-        <TextView
-            android:id="@+id/tv_actor_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/indent_6"
-            android:text="@string/chris_evans"
-            android:textAppearance="@style/actors_name"
-            app:layout_constraintEnd_toEndOf="@+id/iv_actor_2"
-            app:layout_constraintStart_toStartOf="@+id/iv_actor_2"
-            app:layout_constraintTop_toBottomOf="@+id/iv_actor_2" />
-
-        <TextView
-            android:id="@+id/tv_actor_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/indent_6"
-            android:text="@string/mark_ruffalo"
-            android:textAppearance="@style/actors_name"
-            app:layout_constraintEnd_toEndOf="@+id/iv_actor_3"
-            app:layout_constraintStart_toStartOf="@+id/iv_actor_3"
-            app:layout_constraintTop_toBottomOf="@+id/iv_actor_3" />
-
-        <TextView
-            android:id="@+id/tv_actor_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/indent_6"
-            android:text="@string/chris_hemsworth"
-            android:textAppearance="@style/actors_name"
-            app:layout_constraintEnd_toEndOf="@+id/iv_actor_4"
-            app:layout_constraintStart_toStartOf="@+id/iv_actor_4"
-            app:layout_constraintTop_toBottomOf="@+id/iv_actor_4" />
+            tools:listitem="@layout/view_holder_actor"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:orientation="horizontal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
