@@ -9,7 +9,7 @@ import com.androidacademy.academyapp2020.view.ui.movies.MoviesListViewModel
 class ViewModelFactory(private val movieRepository: MovieRepository) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
         when (modelClass) {
             MoviesListViewModel::class.java -> MoviesListViewModel(movieRepository)
             MovieDetailsViewModel::class.java -> MovieDetailsViewModel(movieRepository)
